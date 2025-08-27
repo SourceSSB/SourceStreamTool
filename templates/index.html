@@ -8,7 +8,7 @@
       background-color: #111;
       color: white;
       font-family: sans-serif;
-      padding: 20px;
+      padding: 10px;
     }
 
     h1 {
@@ -23,9 +23,13 @@
       margin-bottom: 10px;
     }
 
-    label {
-      font-weight: bold;
-    }
+    select {
+      padding: 5px;
+      width: 120px;
+      background-color: #222;
+      border: 1px solid #555;
+      color: white;
+    }  
 
     input[type="text"] {
       padding: 5px;
@@ -33,15 +37,8 @@
       background-color: #222;
       border: 1px solid #555;
       color: white;
+      font-size: 14px;
     }  
-  
-    input[readonly] {
-      padding: 5px;
-      width: 60px;
-      background-color: #222;
-      border: 1px solid #555;
-      color: white;
-    } 
 
     input[type="number"] {
       padding: 5px;
@@ -52,7 +49,7 @@
     }
 
     .section {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     button {
@@ -82,6 +79,16 @@
       background-color: rgb(109, 0, 0);
     }
 
+    .wait-button {
+      padding: 5px;
+      background-color: #160094;
+      
+    }
+
+    .wait-button:hover{
+      background-color: #0d0057;
+    }
+
   </style>
 
 </head>
@@ -93,17 +100,18 @@
   </div>
 
   <br>
-  <br>
 
   <!-- Round and Best Of -->
   <div class="centered-row">
     <!--body>Round</body-->
     <input type="text" id="round" placeholder="Round" value="{{ round }}">
-    <input value="Best Of" width="90px" readonly></input>
-    <input type="number" id="bestof" min="1" max="9" step="2" value="{{ bestof }}">
+    <select style="width: 75px;" id="bestorfirst">
+      <option value="Best Of">Best of</option>
+      <option value="First to">First to</option>
+    </select>
+    <input type="number" id="bestof" min="1" max="10" step="1" value="{{ bestof }}">
   </div>
 
-  <br>
   <br>
   
   <!-- Player Names + Scores -->
@@ -128,7 +136,6 @@
   </div>
 
   <br>
-  <br>
 
   <!-- Commentators -->
   <div class="centered-row">
@@ -145,6 +152,28 @@
 
   <br>
 
+   <!-- Lower Third Text -->
+  <div class="centered-row">
+    <input type="text" style="width: 300px; text-align: center;" id="lowerthird" placeholder="Lower Third Text" value="{{ lowerthird }}">
+  </div>
+  
+  <br>
+
+     <!-- Waiting Screen Text -->
+  <div style="text-align: center;">
+    <input type="text" style="width: 300px; text-align: center;" id="wait1" placeholder="Waiting Screen Text" value="{{ wait1 }}">
+    <br>
+    <button class="wait-button" style="width: 101px" id="wait1_1" onclick="setWait(id)">Stream Start</button>
+    <button class="wait-button" style="width: 101px" id="wait1_2" onclick="setWait(id)">Stream Wait</button>
+    <button class="wait-button" style="width: 101px" id="wait1_3" onclick="setWait(id)">Stream End</button>
+    <br>
+    <button class="wait-button" style="width: 154px" id="wait1_4" onclick="setWait(id)">Tech Issue</button>
+    <button class="wait-button" style="width: 154px" id="wait1_5" onclick="setWait(id)">Up Next</button>
+
+  </div>
+  
+  <br>
+
   <!-- Update Button -->
   <div class="centered-row">
     <button onclick="saveData()">Update Data</button>
@@ -152,6 +181,7 @@
 
   <br>
 
+  <!-- Reset Button -->
   <div class="centered-row">
     <button class="red-button" onclick="resetAll()">Reset All</button>
   </div>
@@ -176,6 +206,31 @@
       setField('score2', score1);
     }
 
+    function setWait(id) {
+      switch(id) {
+        case "wait1_1":
+          setField('wait1', "The stream will begin shortly");
+          break;
+
+        case "wait1_2":
+          setField('wait1', "We'll be right back");
+          break;
+
+        case "wait1_3":
+          setField('wait1', "Thanks for watching");
+          break;
+
+        case "wait1_4":
+          setField('wait1', "Technical difficulties");
+          break;
+
+        case "wait1_5":
+          setField('wait1', "Up next: ");
+          break;
+
+      }
+    }
+
     function resetScores() {
       setField('score1', 0);
       setField('score2', 0);
@@ -190,9 +245,11 @@
       setField('commentator2', "Commentator 2");
       setField('round', "Winners Round 1");
       setField('tournament', "Tournament Name");
+      setField('lowerthird', "Lower Third Text");
+      setField('wait1', "Waiting Screen Text");
       setField('bestof', 3);
     }
-
+    
     function swapCommentators() {
       const comm1 = getField('commentator1');
       const comm2 = getField('commentator2');
@@ -210,6 +267,8 @@
         commentator2: getField('commentator2'),
         round: getField('round'),
         tournament: getField('tournament'),
+        lowerthird: getField('lowerthird'),
+        wait1: getField('wait1'),
         bestof: getField('bestof')
       };
 

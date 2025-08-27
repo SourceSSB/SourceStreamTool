@@ -10,7 +10,7 @@ import webview
 app = Flask(__name__)
 app2_template = "http://www.example.com/index.html"
 
-bestof_list = ["1","3","5","7","9"]
+bestof_list = ["1","2","3","4","5","6","7","8","9","10"]
 
 # Determine base directory for script or EXE
 if getattr(sys, "frozen", False):
@@ -35,6 +35,7 @@ def read_or_default(filename, default=""):
                     return match.group(1)  # Return just the number part (e.g., "3")
                 else:
                     return default  # Fallback if pattern doesn't match
+                
             return content
     except FileNotFoundError:
         return default
@@ -99,7 +100,9 @@ def index():
         "bestof": read_or_default("bestof.txt", "3"),
         "commentator1": read_or_default("commentator1.txt", "Commentator 1"),
         "commentator2": read_or_default("commentator2.txt", "Commentator 2"),
-        "tournament": read_or_default("Tournament.txt", "Tournament Name"),
+        "tournament": read_or_default("tournament.txt", "Tournament Name"),
+        "lowerthird": read_or_default("lowerthird.txt", "Lower Third Text"),
+        "wait1": read_or_default("wait1.txt", "Waiting Screen Text")
     }
     return render_template("index.html", **data)
 
