@@ -92,17 +92,17 @@ def index():
 
     # Handle GET — load data
     data = {
+        "host": read_or_default("host.txt", "Host Name"),
+        "round": read_or_default("round.txt", "Round"),
+        "event": read_or_default("event.txt", "Event Name"),
         "player1": read_or_default("player1.txt", "Player 1"),
         "player2": read_or_default("player2.txt", "Player 2"),
+        "player3": read_or_default("player3.txt", "Player 3"),
+        "player4": read_or_default("player4.txt", "Player 4"),
         "score1": read_or_default("score1.txt", "0"),
         "score2": read_or_default("score2.txt", "0"),
-        "round": read_or_default("round.txt", "Winners Round 1"),
-        "bestof": read_or_default("bestof.txt", "3"),
-        "commentator1": read_or_default("commentator1.txt", "Commentator 1"),
-        "commentator2": read_or_default("commentator2.txt", "Commentator 2"),
-        "tournament": read_or_default("tournament.txt", "Tournament Name"),
-        "lowerthird": read_or_default("lowerthird.txt", "Lower Third Text"),
-        "wait1": read_or_default("wait1.txt", "Waiting Screen Text")
+        "score3": read_or_default("score3.txt", "0"),
+        "score4": read_or_default("score4.txt", "0")
     }
     return render_template("index.html", **data)
 

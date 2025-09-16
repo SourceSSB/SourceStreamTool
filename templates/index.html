@@ -94,9 +94,9 @@
 </head>
 <body>
   
-  <!-- Tournament Name -->
+  <!-- Event Name -->
   <div class="centered-row">
-    <input type="text" id="tournament" placeholder="Tournament Name" value="{{ tournament }}">
+    <input type="text" style="width: 200px; text-align: center;" id="event" placeholder="Event Name" value="{{ event }}">
   </div>
 
   <br>
@@ -104,59 +104,51 @@
   <!-- Round and Best Of -->
   <div class="centered-row">
     <!--body>Round</body-->
-    <input type="text" id="round" placeholder="Round" value="{{ round }}">
-    <select style="width: 75px;" id="bestorfirst">
-      <option value="Best Of">Best of</option>
-      <option value="First to">First to</option>
-    </select>
-    <input type="number" id="bestof" min="1" max="10" step="1" value="{{ bestof }}">
+    <input type="text" style="width: 200px; text-align: center;" id="round" placeholder="Round" value="{{ round }}">
   </div>
 
   <br>
   
-  <!-- Player Names + Scores -->
+  <!-- Host Names -->
+  <div class="centered-row">
+    <!--label>Host Name</label-->
+    <input type="text" id="host" placeholder="Host Name" min="0" value="{{ hostname }}">
+  </div>
+
+  <br>
+
+  <!-- Player 1 Name + Score -->
   <div class="centered-row">
     <!--label>P1 Nametag</label-->
     <input type="text" id="player1" placeholder="Player 1" min="0" value="{{ player1 }}">
-    <!--label>P2 Nametag </label-->
-    <input type="text" id="player2" placeholder="Player 2" min="0" value="{{ player2 }}">
-  </div>
-
-  <div class="centered-row">
     <!--label>P1 Score</label-->
     <input type="number" id="score1" value="{{ score1 }}">
+  </div>
+
+  <!-- Player 2 Name + Score -->
+  <div class="centered-row">
+    <!--label>P2 Nametag</label-->
+    <input type="text" id="player2" placeholder="Player 2" min="0" value="{{ player2 }}">
     <!--label>P2 Score</label-->
     <input type="number" id="score2" value="{{ score2 }}">
   </div>
 
-  <!-- Swap Players Button -->
+  <!-- Player 3 Name + Score -->
   <div class="centered-row">
-    <button onclick="swapPlayers()">⇄</button>
-    <button onclick="resetScores()">⟳</button>
+    <!--label>P3 Nametag</label-->
+    <input type="text" id="player3" placeholder="Player 3" min="0" value="{{ player3 }}">
+    <!--label>P3 Score</label-->
+    <input type="number" id="score3" value="{{ score3 }}">
   </div>
 
-  <br>
-
-  <!-- Commentators -->
+  <!-- Player 4 Name + Score -->
   <div class="centered-row">
-    <!--label>Comms 1</label-->
-    <input type="text" id="commentator1" placeholder="Commentator 1" value="{{ commentator1 }}">
-    <!--label>Comms 2</label-->
-    <input type="text" id="commentator2" placeholder="Commentator 2"value="{{ commentator2 }}">
+    <!--label>P4 Nametag</label-->
+    <input type="text" id="player4" placeholder="Player 4" min="0" value="{{ player4 }}">
+    <!--label>P4 Score</label-->
+    <input type="number" id="score4" value="{{ score4 }}">
   </div>
 
-  <!-- Swap Commentators Button -->
-  <div class="centered-row">
-    <button onclick="swapCommentators()">⇄</button>
-  </div>
-
-  <br>
-
-   <!-- Lower Third Text -->
-  <div class="centered-row">
-    <input type="text" style="width: 300px; text-align: center;" id="lowerthird" placeholder="Lower Third Text" value="{{ lowerthird }}">
-  </div>
-  
   <br>
 
      <!-- Waiting Screen Text -->
