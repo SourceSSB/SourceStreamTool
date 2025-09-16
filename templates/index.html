@@ -112,7 +112,7 @@
   <!-- Host Names -->
   <div class="centered-row">
     <!--label>Host Name</label-->
-    <input type="text" id="host" placeholder="Host Name" min="0" value="{{ hostname }}">
+    <input type="text" id="host" placeholder="Host Name" min="0" value="{{ host }}">
   </div>
 
   <br>
@@ -147,6 +147,13 @@
     <input type="text" id="player4" placeholder="Player 4" min="0" value="{{ player4 }}">
     <!--label>P4 Score</label-->
     <input type="number" id="score4" value="{{ score4 }}">
+  </div>
+
+  <br>
+
+   <!-- Reset Scores Button -->
+  <div class="centered-row">
+    <button onclick="resetScores()">⟳</button>
   </div>
 
   <br>
@@ -187,17 +194,6 @@
       document.getElementById(id).value = val;
     }
 
-    function swapPlayers() {
-      const name1 = getField('player1');
-      const name2 = getField('player2');
-      const score1 = getField('score1');
-      const score2 = getField('score2');
-      setField('player1', name2);
-      setField('player2', name1);
-      setField('score1', score2);
-      setField('score2', score1);
-    }
-
     function setWait(id) {
       switch(id) {
         case "wait1_1":
@@ -226,42 +222,41 @@
     function resetScores() {
       setField('score1', 0);
       setField('score2', 0);
+      setField('score3', 0);
+      setField('score4', 0);
     }
 
     function resetAll() {
+      setField('host', "Host Name");
+      setField('round', "Round");
+      setField('event', "Event Name");
       setField('player1', "Player 1");
       setField('player2', "Player 2");
+      setField('player3', "Player 3");
+      setField('player4', "Player 4");
       setField('score1', 0);
       setField('score2', 0);
+      setField('score3', 0);
+      setField('score4', 0);
       setField('commentator1', "Commentator 1");
       setField('commentator2', "Commentator 2");
-      setField('round', "Winners Round 1");
-      setField('tournament', "Tournament Name");
-      setField('lowerthird', "Lower Third Text");
       setField('wait1', "Waiting Screen Text");
-      setField('bestof', 3);
-    }
-    
-    function swapCommentators() {
-      const comm1 = getField('commentator1');
-      const comm2 = getField('commentator2');
-      setField('commentator1', comm2);
-      setField('commentator2', comm1);
     }
 
     function saveData() {
       const data = {
+        event: getField('event'),
+        round: getField('round'),
+        host: getField('host'),
         player1: getField('player1'),
         player2: getField('player2'),
+        player3: getField('player3'),
+        player4: getField('player4'),
         score1: getField('score1'),
         score2: getField('score2'),
-        commentator1: getField('commentator1'),
-        commentator2: getField('commentator2'),
-        round: getField('round'),
-        tournament: getField('tournament'),
-        lowerthird: getField('lowerthird'),
+        score3: getField('score3'),
+        score4: getField('score4'),
         wait1: getField('wait1'),
-        bestof: getField('bestof')
       };
 
       fetch('/', {

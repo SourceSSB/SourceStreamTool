@@ -102,7 +102,8 @@ def index():
         "score1": read_or_default("score1.txt", "0"),
         "score2": read_or_default("score2.txt", "0"),
         "score3": read_or_default("score3.txt", "0"),
-        "score4": read_or_default("score4.txt", "0")
+        "score4": read_or_default("score4.txt", "0"),
+        "wait1": read_or_default("wait1.txt", "Waiting Screen Text")
     }
     return render_template("index.html", **data)
 
