@@ -16,13 +16,13 @@ VSVersionInfo(
         '040904B0',
         [
           StringStruct('CompanyName', 'TeamHalo'),
-          StringStruct('FileDescription', 'SourceStreamTool v1.0-beta'),
-          StringStruct('FileVersion', '1.0.0.0'),
+          StringStruct('FileDescription', 'SourceStreamTool v1.1-beta'),
+          StringStruct('FileVersion', '1.1.0.0'),
           StringStruct('InternalName', 'SourceStreamTool'),
           StringStruct('LegalCopyright', '© 2025 Devante Moore'),
           StringStruct('OriginalFilename', 'SourceStreamTool.exe'),
-          StringStruct('ProductName', 'SourceStreamTool v1.0-beta'),
-          StringStruct('ProductVersion', '1.0.0.0'),
+          StringStruct('ProductName', 'SourceStreamTool v1.1-beta'),
+          StringStruct('ProductVersion', '1.1.0.0'),
         ]
       )
     ]),
